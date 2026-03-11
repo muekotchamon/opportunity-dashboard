@@ -84,8 +84,8 @@
     #design1.hidden, #design2.hidden, #design3.hidden { display: none !important; }
     /* แท็บ Design 3: ซ่อน/แสดง content ตาม tab ที่เลือก */
     #design3 [data-d3-content].hidden { display: none !important; }
-    /* Layout เนื้อหาแต่ละ tab (ยกเว้น overview ใช้ .design3-grid เอง) */
-    #design3 [data-d3-content]:not(.hidden):not([data-d3-content="overview"]) {
+    /* Layout เนื้อหาแต่ละ tab (ยกเว้น overview, tasks ใช้ rule ของตัวเอง) */
+    #design3 [data-d3-content]:not(.hidden):not([data-d3-content="overview"]):not([data-d3-content="tasks"]) {
       display: grid !important;
       grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       gap: 1.25rem;
@@ -110,12 +110,29 @@
       #design3 [data-d3-content="opportunity-info"] .card-saas:nth-child(2),
       #design3 [data-d3-content="opportunity-info"] .card-saas:nth-child(3) { grid-column: 1; grid-row: auto; }
     }
-    /* Tasks tab: หัวข้อ + Add เต็มแถว, การ์ด task เรียงแนวนอน */
-    #design3 [data-d3-content="tasks"]:not(.hidden) {
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* Tasks tab: การ์ดจัด grid 3 คอลัมน์เท่ากัน (เดสก์ท็อป) / 2 / 1 (มือถือ) */
+    #design3 .d3-tasks-grid:not(.hidden) {
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      gap: 1.25rem;
+      align-content: start;
+      width: 100%;
+      min-width: 0;
     }
-    #design3 [data-d3-content="tasks"] > div:first-child { grid-column: 1 / -1; }
-    #design3 [data-d3-content="tasks"] .card-saas { min-height: 120px; }
+    #design3 .d3-tasks-grid > div:first-child { grid-column: 1 / -1; }
+    #design3 .d3-tasks-grid .card-saas {
+      min-height: 120px;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    @media (max-width: 900px) {
+      #design3 .d3-tasks-grid:not(.hidden) { grid-template-columns: repeat(2, 1fr) !important; }
+    }
+    @media (max-width: 540px) {
+      #design3 .d3-tasks-grid:not(.hidden) { grid-template-columns: 1fr !important; }
+    }
     /* Tab ที่มีหัวข้อด้านบน (Notes ฯลฯ) ให้หัวข้อคร่อมเต็มแถว */
     #design3 [data-d3-content] > div:first-child:not(section) { grid-column: 1 / -1; }
     /* Overview tab: เต็มความสูงของพื้นที่ (layout มาจาก .design3-grid) */
@@ -1058,7 +1075,7 @@
         </div>
 
         <!-- แท็บ Tasks: แยกการ์ดย่อย (การ์ดต่อ task) -->
-        <div data-d3-content="tasks" class="hidden">
+        <div data-d3-content="tasks" class="hidden d3-tasks-grid">
           <div class="flex items-center justify-between">
             <h2 class="text-base font-semibold text-slate-800">Tasks</h2>
             <button type="button" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border-2 border-dashed border-slate-200 text-slate-600 text-sm font-medium hover:border-primary-400 hover:text-primary-600 hover:bg-primary-50/50 transition-colors">+ Add</button>

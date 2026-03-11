@@ -23,7 +23,9 @@ Open `crm-opportunity-dashboard.html` in a browser (no build step).
 
 3. In GitHub: **Settings → General → Danger Zone → Change visibility → Public**.
 
-## View live (GitHub Pages)
+## Deploy to GitHub Pages
 
-In the repo: **Settings → Pages** → Source: **Deploy from a branch** → Branch: **main** → **/ (root)** → Save.  
-Then open: **https://YOUR_USERNAME.github.io/YOUR_REPO/**
+1. In the repo go to **Settings → Pages**.
+2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
+3. Push to `main` (or run the workflow manually: **Actions** → **Deploy to GitHub Pages** → **Run workflow**).
+4. When the workflow finishes, open **https://YOUR_USERNAME.github.io/YOUR_REPO/**.

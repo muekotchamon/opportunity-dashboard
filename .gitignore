@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Build / output
+.next/
+out/
+dist/
+build/
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Optional: keep if you want to track
+# .cursor/

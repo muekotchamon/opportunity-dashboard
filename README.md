@@ -1,14 +1,17 @@
 # CRM Opportunity Dashboard
 
-Single-page CRM opportunity view with three layout designs.
+Single-page CRM with Opportunity, Profile, and System Settings. Each section has three layout designs (Design 1, Design 2, Design 3).
 
 ## Contents
 
-- **crm-opportunity-dashboard.html** – Dashboard with Design 1, Design 2, and Design 3 (tabbed: Overview, Opportunity Info, Lead & Referral, Notes, Schedule, Measurement, Estimates, Gallery, Tasks, Communication, Insurance, Checklist).
+- **index.html** – Main app:
+  - **Opportunity** – Dashboard (Overview, Opportunity Info, Lead & Referral, Notes, Schedule, Measurement, Estimates, Gallery, Tasks, Communication, Insurance, Checklist).
+  - **Profile** – User profile with Basic / Job / Emergency and three layout designs.
+  - **System Settings** – Company Info, Locations, Departments, Zipcodes, Integrations, Email, Payment Obligations with three layout designs.
 
 ## Run locally
 
-Open `crm-opportunity-dashboard.html` in a browser (no build step).
+Open `index.html` in a browser (no build step).
 
 ## Publish to GitHub (public)
 

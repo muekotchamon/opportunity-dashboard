@@ -1,0 +1,67 @@
+/* All @import must come first */
+@import "bootstrap/dist/css/bootstrap.min.css";
+@import "bootstrap-icons/font/bootstrap-icons.css";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+@import "../styles/theme.css";
+@import "../styles/layout.css";
+@import "../styles/components.css";
+@import "../styles/design1.css";
+@import "../styles/design2.css";
+@import "../styles/design3.css";
+@import "../styles/design4.css";
+@import "../styles/profile.css";
+@import "../styles/settings.css";
+
+/* Bootstrap 5 theme override (primary #F83B3B) */
+:root {
+  --bs-primary: #F83B3B;
+  --bs-primary-rgb: 248, 59, 59;
+  --primary: #F83B3B;
+  --primary-hover: #e03535;
+  --surface-50: #ffffff;
+  --surface-100: #fafafa;
+  --surface-200: #f5f5f5;
+  --surface-300: #e5e5e5;
+  --settings-bg: #F7F9FC;
+  --settings-card: #FFFFFF;
+  --settings-primary: #F83B3B;
+  --settings-text: #111827;
+  --settings-text-secondary: #6B7280;
+  --settings-border: #E5E7EB;
+  --profile-bg: #fafafa;
+  --profile-card: #FFFFFF;
+  --profile-primary: #F83B3B;
+  --profile-text: #111827;
+  --profile-text-secondary: #6B7280;
+  --profile-border: #e5e7eb;
+  --btn-primary: var(--primary);
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  background: var(--surface-50);
+  color: #1e293b;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Input / form controls: ขอบมุมโค้งขึ้น */
+.form-control,
+.form-select {
+  border-radius: 0.5rem;
+}
+.input-group .form-control:not(:first-child):not(:last-child),
+.input-group .form-select:not(:first-child):not(:last-child) {
+  border-radius: 0;
+}
+.input-group .form-control:first-child,
+.input-group .form-select:first-child,
+.input-group .input-group-text:first-child {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+.input-group .form-control:last-child,
+.input-group .form-select:last-child,
+.input-group .input-group-text:last-child {
+  border-radius: 0 0.5rem 0.5rem 0;
+}

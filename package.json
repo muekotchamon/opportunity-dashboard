@@ -1,0 +1,10 @@
+{
+  "name": "new",
+  "private": true,
+  "scripts": {
+    "dev": "rm -f crm-dashboard/.next/dev/lock && npm run dev --prefix crm-dashboard",
+    "dev:clean": "rm -f crm-dashboard/.next/dev/lock && npm run dev --prefix crm-dashboard",
+    "build": "npm run build --prefix crm-dashboard",
+    "start": "npm run start --prefix crm-dashboard"
+  }
+}

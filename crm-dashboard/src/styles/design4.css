@@ -1,0 +1,145 @@
+/* Design 4: wrapper with tabs + content */
+#design4.design4-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 0;
+  min-height: 0;
+  flex: 1;
+}
+#design4 .design3-tabs-spacer { flex-shrink: 0; }
+#design4 .d3-page-tab {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  white-space: nowrap;
+}
+#design4 .d3-page-tab.active { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
+#design4 .d3-page-tab:not(.active) { color: #475569; }
+#design4 .d3-page-tab:not(.active):hover { background: #f8fafc; }
+
+/* Communication & History tabs (Call Logs | Activities) — same as Design3, no black border */
+#design4 .design3-comm-tabs {
+  border: none !important;
+  border-bottom: 1px solid #f1f5f9 !important;
+}
+#design4 .design3-comm-tabs .inner-tab {
+  outline: none !important;
+  box-shadow: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: 2px solid transparent !important;
+  background: transparent !important;
+}
+#design4 .design3-comm-tabs .inner-tab:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+#design4 .design3-comm-tabs .inner-tab.inner-tab-active {
+  border-bottom-color: #F83B3B !important;
+}
+#design4 .inner-tab { background: transparent !important; color: #9ca3af !important; }
+#design4 .inner-tab.inner-tab-active { background: transparent !important; color: #F83B3B !important; }
+
+/* Design 4: 3 columns match original, gap 1rem */
+#design4 { margin-top: 0; }
+#design4 .design4-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  align-items: stretch;
+  min-height: min(600px, calc(100vh - 14rem));
+}
+#design4 .design4-grid .d4-col1 { grid-column: 1; display: flex; flex-direction: column; gap: 1rem; min-height: 0; }
+#design4 .d4-col1 .d4-lead-referral { flex: 1 1 auto; min-height: 0; display: flex; flex-direction: column; }
+#design4 .d4-col1 .d4-lead-referral .d4-lead-referral-body { flex: 1 1 auto; min-height: 0; }
+#design4 .design4-grid .d4-col2 { grid-column: 2; display: flex; flex-direction: column; gap: 1rem; min-height: 0; }
+#design4 .design4-grid .d4-col3 { grid-column: 3; display: flex; flex-direction: column; gap: 1rem; min-height: 0; }
+#design4 .design4-grid .card-saas { min-height: 0; }
+#design4 .d4-col3 .card-saas:first-of-type { min-height: 320px; flex: 1 1 auto; display: flex; flex-direction: column; }
+#design4 .d4-notes-feed { flex: 1; min-height: 0; overflow-y: auto; }
+#design4 .design4-grid .d4-col2 .card-saas:first-of-type { flex: 0 0 auto; }
+#design4 .design4-grid .d4-col2 .card-saas:last-of-type { flex: 1 1 auto; min-height: 120px; }
+
+@media (max-width: 1023px) {
+  #design4 .design4-grid { grid-template-columns: 1fr; min-height: 0; }
+  #design4 .design4-grid .d4-col1, #design4 .design4-grid .d4-col2, #design4 .design4-grid .d4-col3 { grid-column: 1; }
+  #design4 .design4-grid .d4-col2 .card-saas:last-of-type { flex: 0 0 auto; min-height: 0; }
+}
+
+/* Design 4 tab content layouts (non-overview) — expand to fill space */
+#design4 [data-d4-content] {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+#design4 [data-d4-content] > .card-saas {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+#design4 [data-d4-content] > .card-saas:only-child {
+  min-height: 200px;
+}
+
+#design4 .design4-tab-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 1rem;
+  align-items: stretch;
+  min-height: 0;
+}
+#design4 .design4-tab-grid > section {
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+#design4 .design4-tab-grid > section:first-child { grid-column: 1 / -1; }
+#design4 .design4-tab-grid > section:nth-child(2),
+#design4 .design4-tab-grid > section:nth-child(3) { flex: 1 1 auto; min-height: 120px; }
+@media (max-width: 767px) {
+  #design4 .design4-tab-grid { grid-template-columns: 1fr; }
+  #design4 .design4-tab-grid > section:first-child { grid-column: 1; }
+}
+#design4 .design4-tab-lead-referral { width: 100%; }
+#design4 .design4-tab-lead-referral > .card-saas { flex: 1 1 auto; }
+#design4 .design4-tab-notes { width: 100%; }
+#design4 .design4-tab-notes > .card-saas { flex: 1 1 auto; }
+#design4 .design4-tab-schedule { width: 100%; }
+#design4 .design4-tab-schedule > .card-saas { flex: 1 1 auto; }
+#design4 .design4-tab-measurement { width: 100%; }
+#design4 .design4-tab-measurement > .card-saas { flex: 1 1 auto; }
+#design4 .design4-tab-estimates { width: 100%; }
+#design4 .design4-tab-estimates > .card-saas { flex: 1 1 auto; display: flex; flex-direction: column; min-height: 0; }
+/* Estimates tab: list fills full card height (Design 4 only) */
+#design4 .design4-tab-estimates .estimates-section {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+#design4 .design4-tab-estimates .estimates-list-scroll {
+  max-height: none;
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+#design4 .design4-tab-gallery { width: 100%; }
+#design4 .design4-tab-gallery > .card-saas { flex: 1 1 auto; }
+#design4 .design4-tab-tasks { width: 100%; }
+#design4 .design4-tab-tasks > .card-saas { flex: 1 1 auto; }
+#design4 .design4-tab-communication { width: 100%; }
+#design4 .design4-tab-communication > .card-saas { flex: 1 1 auto; }
+#design4 .design4-tab-insurance { width: 100%; }
+#design4 .design4-tab-insurance > .card-saas { flex: 1 1 auto; }
+#design4 .design4-tab-checklist { width: 100%; }
+#design4 .design4-tab-checklist > .card-saas { flex: 1 1 auto; }

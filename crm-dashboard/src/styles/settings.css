@@ -1,0 +1,737 @@
+#settings-page {
+  --settings-bg: #F7F9FC;
+  --settings-card: #FFFFFF;
+  --settings-primary: #F83B3B;
+  --settings-text: #111827;
+  --settings-text-secondary: #6B7280;
+  --settings-border: #E5E7EB;
+  --btn-primary: var(--settings-primary);
+}
+/* Settings page wrapper: match original min-h-[80vh] p-6 */
+#settings-page.settings-page-wrapper {
+  min-height: 80vh;
+  padding: 1.5rem;
+}
+#settings-page .settings-card {
+  background: var(--settings-card);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  border: 1px solid var(--settings-border);
+}
+#settings-page .settings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  width: 100%;
+  text-align: left;
+  border: 1px solid transparent;
+  transition: color 0.2s, background 0.2s;
+}
+#settings-page .settings-nav-item:hover {
+  background: #f8fafc;
+  color: var(--settings-text);
+}
+/* ========== Settings Design 1 — copy from index.html (Tailwind → Bootstrap equivalents) ========== */
+/* #settings-design1 class="p-6" → padding 1.5rem. Wrapper already has padding so we don't double it. */
+#settings-page #settings-design1.settings-d1-root {
+  padding: 0;
+}
+/* grid grid-cols-1 lg:grid-cols-[240px_1fr] gap-6 */
+#settings-page .settings-design1-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  min-width: 0;
+}
+@media (min-width: 992px) {
+  #settings-page .settings-design1-grid {
+    grid-template-columns: 240px 1fr;
+  }
+}
+#settings-page .settings-design1-grid > .min-w-0 { min-width: 0; }
+
+/* aside.settings-card.p-4.h-fit — sidebar = white card, padding 1rem, height fit */
+#settings-page .settings-d1-aside {
+  background: var(--settings-card);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  border: 1px solid var(--settings-border);
+  padding: 1rem;
+  height: fit-content;
+}
+/* nav.space-y-0.5.text-sm — gap between buttons 2px, font 0.875rem */
+#settings-page .settings-d1-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  font-size: 0.875rem;
+}
+/* button: flex items-center gap-2.5 px-3 py-2.5 rounded-lg font-medium border border-transparent w-full text-left */
+#settings-page .settings-d1-nav .settings-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  border: 1px solid transparent;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  color: var(--settings-text-secondary);
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s;
+}
+#settings-page .settings-d1-nav .settings-nav-item:hover {
+  background: #f8fafc;
+  color: var(--settings-text);
+}
+#settings-page .settings-d1-nav .settings-nav-item.active {
+  color: var(--settings-primary);
+  background: rgba(248,59,59,.08);
+  border-color: rgba(248,59,59,.25);
+}
+#settings-page .settings-d1-nav .settings-nav-item i { font-size: 1rem; flex-shrink: 0; }
+
+/* content: space-y-6 = 1.5rem between sections and button row */
+#settings-page .settings-d1-company-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+/* section.settings-card.p-6 — same card as sidebar, padding 1.5rem */
+#settings-page .settings-d1-section {
+  background: var(--settings-card);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  border: 1px solid var(--settings-border);
+  padding: 1.5rem;
+}
+/* h2.text-base.font-semibold.mb-4 */
+#settings-page .settings-d1-section-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--settings-text);
+  margin-bottom: 1rem;
+}
+/* grid grid-cols-1 sm:grid-cols-2 gap-4 */
+#settings-page .settings-d1-form-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 576px) {
+  #settings-page .settings-d1-form-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+/* sm:col-span-2 = first row spans 2 cols */
+#settings-page .settings-d1-form-row-span {
+  grid-column: 1 / -1;
+}
+/* flex items-start gap-4 */
+#settings-page .settings-d1-form-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+/* logo: aspect-square w-24 rounded-xl border-2 border-dashed bg-slate-50 */
+#settings-page .settings-d1-logo-box {
+  width: 96px;
+  height: 96px;
+  flex-shrink: 0;
+  border: 2px dashed var(--settings-border);
+  border-radius: 0.75rem;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+#settings-page .settings-d1-logo-box:hover { border-color: var(--settings-primary); }
+#settings-page .settings-d1-logo-box span {
+  font-size: 0.75rem;
+  color: var(--settings-text-secondary);
+}
+/* flex-1 space-y-3 = right side of logo row */
+#settings-page .settings-d1-logo-fields {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+/* each field: label block text-sm font-medium mb-1 */
+#settings-page .settings-d1-field label,
+#settings-page .settings-d1-form-cell label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--settings-text-secondary);
+  margin-bottom: 0.25rem;
+}
+/* sm:col-span-2 for Address */
+#settings-page .settings-d1-form-cell-full {
+  grid-column: 1 / -1;
+}
+/* input: w-full px-3 py-2 rounded-lg border */
+#settings-page .settings-d1-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--settings-text);
+  border-radius: 0.5rem;
+  border: 1px solid var(--settings-border);
+}
+#settings-page .settings-d1-input:focus {
+  border-color: var(--settings-primary);
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(248,59,59,.2);
+}
+/* flex justify-end for Save button */
+#settings-page .settings-d1-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Tab content wrapper (all tabs except company) */
+#settings-page .settings-d1-tab-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+/* Larger section title for Locations, Departments, Zipcodes, Payment Obligations */
+#settings-page .settings-d1-section-title-lg {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+/* Tables: เหมือน version เก่า (thead เทาอ่อน, แถวมีเส้นคั่น, hover, padding px-4 py-3) */
+#settings-page .settings-d1-table,
+#settings-page #settings-design2 .settings-d2-card .table-responsive table,
+#settings-page #settings-design3 .settings-d3-body-inner .table-responsive table {
+  width: 100%;
+  font-size: 0.875rem;
+  text-align: left;
+  color: var(--settings-text);
+  min-width: 0;
+}
+#settings-page .settings-d1-table thead tr,
+#settings-page #settings-design2 .settings-d2-card .table-responsive thead tr,
+#settings-page #settings-design3 .settings-d3-body-inner .table-responsive thead tr {
+  border-bottom: 1px solid var(--settings-border);
+  background: rgba(248, 250, 252, 0.8) !important;
+}
+#settings-page .settings-d1-table thead th,
+#settings-page #settings-design2 .settings-d2-card .table-responsive thead th,
+#settings-page #settings-design3 .settings-d3-body-inner .table-responsive thead th {
+  font-weight: 600;
+  color: var(--settings-text);
+  padding: 0.75rem 1rem;
+  border: none !important;
+  font-size: 0.875rem;
+  background: transparent !important;
+}
+#settings-page .settings-d1-table td,
+#settings-page #settings-design2 .settings-d2-card .table-responsive td,
+#settings-page #settings-design3 .settings-d3-body-inner .table-responsive td {
+  padding: 0.75rem 1rem;
+  color: var(--settings-text-secondary);
+  vertical-align: middle;
+  border: none;
+  border-bottom: 1px solid var(--settings-border);
+  font-size: 0.875rem;
+}
+#settings-page .settings-d1-table tbody tr:hover,
+#settings-page #settings-design2 .settings-d2-card .table-responsive tbody tr:hover,
+#settings-page #settings-design3 .settings-d3-body-inner .table-responsive tbody tr:hover {
+  background: rgba(248, 250, 252, 0.5);
+}
+#settings-page .settings-d1-table tbody tr,
+#settings-page #settings-design2 .settings-d2-card .table-responsive tbody tr,
+#settings-page #settings-design3 .settings-d3-body-inner .table-responsive tbody tr {
+  border: none;
+}
+#settings-page .settings-d1-table-link,
+#settings-page #settings-design2 .settings-d2-card .table-responsive .btn-link:not(.text-danger),
+#settings-page #settings-design3 .settings-d3-body-inner .table-responsive .btn-link:not(.text-danger) {
+  color: var(--settings-primary) !important;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+#settings-page .settings-d1-table-link:hover,
+#settings-page #settings-design2 .settings-d2-card .table-responsive .btn-link:not(.text-danger):hover,
+#settings-page #settings-design3 .settings-d3-body-inner .table-responsive .btn-link:not(.text-danger):hover {
+  text-decoration: underline;
+}
+/* Status tags ในตาราง: โทนอ่อนเหมือนเดิม (emerald-100/800, slate-100/700) */
+#settings-page .settings-d1-table .badge.bg-success,
+#settings-page #settings-design2 .settings-d2-card .table-responsive .badge.bg-success,
+#settings-page #settings-design3 .settings-d3-body-inner .table-responsive .badge.bg-success {
+  background: #d1fae5 !important;
+  color: #065f46;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+}
+#settings-page .settings-d1-table .badge.bg-secondary,
+#settings-page #settings-design2 .settings-d2-card .table-responsive .badge.bg-secondary,
+#settings-page #settings-design3 .settings-d3-body-inner .table-responsive .badge.bg-secondary {
+  background: #f1f5f9 !important;
+  color: #475569;
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+/* ========== Payment Obligations ========== */
+#settings-page .settings-po-card {
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--settings-border);
+  background: rgba(248, 250, 252, 0.5);
+}
+#settings-page .settings-po-card .settings-po-label {
+  font-size: 0.75rem;
+  color: var(--settings-text-secondary);
+  display: block;
+  margin-bottom: 0.25rem;
+}
+#settings-page .settings-po-card .settings-po-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--settings-text);
+}
+#settings-page .settings-po-card .settings-po-value.text-success {
+  color: #059669;
+}
+/* Amount (%) ในตาราง: พื้นหลังแดงอ่อน ตัวอักษรแดงเข้ม */
+#settings-page [data-settings-content="payment-obligations"] .settings-po-amount,
+#settings-page [data-d2-content="payment-obligations"] .settings-po-amount,
+#settings-page #settings-design3 .settings-d3-body-inner .settings-po-amount {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  background: rgba(248, 59, 59, 0.12);
+  color: #b91c1c;
+}
+/* Status: active = เขียว, inactive = เทาอ่อน */
+#settings-page [data-settings-content="payment-obligations"] .settings-po-status-active,
+#settings-page [data-d2-content="payment-obligations"] .settings-po-status-active,
+#settings-page #settings-design3 .settings-d3-body-inner .settings-po-status-active {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #059669;
+}
+#settings-page [data-settings-content="payment-obligations"] .settings-po-status-inactive,
+#settings-page [data-d2-content="payment-obligations"] .settings-po-status-inactive,
+#settings-page #settings-design3 .settings-d3-body-inner .settings-po-status-inactive {
+  font-size: 0.75rem;
+  color: #94a3b8;
+}
+/* Footer Total Active Allocation: แท็ก 100% โทนเขียวอ่อน */
+#settings-page .settings-po-footer-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 0.25rem;
+  background: #d1fae5;
+  color: #065f46;
+}
+/* User Information filters */
+#settings-page .settings-d1-filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+#settings-page .settings-d1-filter-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  color: var(--settings-text-secondary);
+}
+/* User table avatar circle */
+#settings-page .settings-d1-avatar {
+  width: 2.25rem;
+  height: 2.25rem;
+  background: var(--settings-primary);
+  opacity: 0.9;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+#settings-page { min-width: 0; }
+#settings-page .settings-layout-tab { background: transparent; color: #6B7280; border: 1px solid transparent; }
+#settings-page .settings-layout-tab:hover { color: #111827; }
+#settings-page .settings-layout-tab.settings-tab-active {
+  background: #fff;
+  color: var(--settings-primary);
+  border-color: #E5E7EB;
+  font-weight: 600;
+  box-shadow: 0 1px 2px rgba(0,0,0,.06);
+}
+#settings-design1 [data-settings-content].hidden { display: none !important; }
+#settings-design2 [data-d2-content].hidden { display: none !important; }
+#settings-design2 .settings-d2-tab { color: var(--settings-text-secondary); border-bottom-color: transparent; }
+#settings-design2 .settings-d2-tab.active { color: var(--settings-primary); border-bottom-color: var(--settings-primary); }
+
+/* ========== Settings Design 2 — แกะจาก index.html (Tailwind → CSS) ========== */
+#settings-page #settings-design2.settings-d2-root {
+  padding: 1.5rem;
+}
+#settings-page #settings-design2 .settings-d2-header {
+  margin-bottom: 1.5rem;
+}
+#settings-page #settings-design2 .settings-d2-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--settings-text);
+  margin: 0;
+}
+#settings-page #settings-design2 .settings-d2-subtitle {
+  font-size: 0.875rem;
+  color: var(--settings-text-secondary);
+  margin: 0.125rem 0 0;
+}
+#settings-page #settings-design2 .settings-d2-tabs-wrap {
+  display: flex;
+  gap: 0.25rem;
+  margin-bottom: 1.5rem;
+  overflow-x: auto;
+}
+#settings-page #settings-design2 .settings-d2-tabs-wrap.design3-comm-tabs {
+  border: none !important;
+  border-bottom: 1px solid #e5e7eb !important;
+}
+#settings-page #settings-design2 .settings-d2-tabs-wrap .inner-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-shrink: 0;
+  outline: none !important;
+  box-shadow: none !important;
+  border-left: none !important;
+  border-right: none !important;
+  border-top: none !important;
+  border-bottom: 2px solid transparent !important;
+  margin-bottom: -1px;
+  background: transparent !important;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+#settings-page #settings-design2 .settings-d2-tabs-wrap .inner-tab:hover {
+  background: transparent !important;
+  color: #6b7280;
+}
+#settings-page #settings-design2 .settings-d2-tabs-wrap .inner-tab:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+#settings-page #settings-design2 .settings-d2-tabs-wrap .inner-tab.inner-tab-active {
+  background: transparent !important;
+  color: var(--settings-primary) !important;
+  border-bottom-color: var(--settings-primary) !important;
+}
+#settings-page #settings-design2 .settings-d2-tab {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  flex-shrink: 0;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+#settings-page #settings-design2 .settings-d2-tab:hover {
+  color: var(--settings-text);
+}
+#settings-page #settings-design2 .settings-d2-tab.inner-tab-active {
+  background: transparent !important;
+  color: var(--settings-primary) !important;
+  border-bottom-color: var(--settings-primary) !important;
+}
+/* Company content: grid 2 cols on lg, gap-6 */
+#settings-page #settings-design2 [data-d2-content="company"].settings-d2-company-wrap {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 992px) {
+  #settings-page #settings-design2 [data-d2-content="company"].settings-d2-company-wrap {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+#settings-page #settings-design2 .settings-d2-card {
+  background: var(--settings-card);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  border: 1px solid var(--settings-border);
+  padding: 1.5rem;
+}
+#settings-page #settings-design2 .settings-d2-card-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--settings-text);
+  margin: 0 0 1rem;
+}
+#settings-page #settings-design2 .settings-d2-space-y-4 {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#settings-page #settings-design2 .settings-d2-logo-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+#settings-page #settings-design2 .settings-d2-logo-box {
+  width: 5rem;
+  height: 5rem;
+  aspect-ratio: 1;
+  border-radius: 0.5rem;
+  border: 2px dashed var(--settings-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: #f8fafc;
+  transition: border-color 0.2s;
+}
+#settings-page #settings-design2 .settings-d2-logo-box:hover {
+  border-color: var(--settings-primary);
+}
+#settings-page #settings-design2 .settings-d2-logo-box span {
+  font-size: 0.75rem;
+  color: var(--settings-text-secondary);
+}
+#settings-page #settings-design2 .settings-d2-fields-col {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+#settings-page #settings-design2 .settings-d2-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--settings-text-secondary);
+  margin-bottom: 0.25rem;
+}
+#settings-page #settings-design2 .settings-d2-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  color: var(--settings-text);
+  border-radius: 0.5rem;
+  border: 1px solid var(--settings-border);
+  background: #fff;
+}
+#settings-page #settings-design2 .settings-d2-input:focus {
+  outline: none;
+  border-color: var(--settings-primary);
+  box-shadow: 0 0 0 2px rgba(248,59,59,.2);
+}
+#settings-page #settings-design2 .settings-d2-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+#settings-page #settings-design2 .settings-d2-save-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 1rem;
+}
+#settings-page #settings-design2 .settings-d2-btn-primary {
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  background: var(--settings-primary);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+#settings-page #settings-design2 .settings-d2-btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* ========== Settings Design 3 — แกะจาก index.html (Tailwind → CSS) ========== */
+#settings-page #settings-design3.settings-d3-root {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.5rem;
+}
+#settings-page #settings-design3 .settings-d3-header {
+  margin-bottom: 1.5rem;
+}
+#settings-page #settings-design3 .settings-d3-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--settings-text);
+  margin: 0;
+}
+#settings-page #settings-design3 .settings-d3-subtitle {
+  font-size: 0.875rem;
+  color: var(--settings-text-secondary);
+  margin: 0.125rem 0 0;
+}
+/* Design 3: แต่ละ section เป็น settings-card overflow-hidden (เหมือนเดิม) */
+#settings-page #settings-design3 .settings-d3-section {
+  background: var(--settings-card);
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+  border: 1px solid var(--settings-border);
+  overflow: hidden;
+  margin-bottom: 1rem;
+}
+#settings-page #settings-design3 .settings-d3-accordion-btn {
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 600;
+  color: var(--settings-text);
+  background: #fff;
+  border: none;
+  transition: background 0.2s;
+}
+#settings-page #settings-design3 .settings-d3-accordion-btn:hover {
+  background: #F9FAFB;
+}
+#settings-page #settings-design3 .settings-d3-accordion-btn .settings-d3-chevron {
+  width: 1.25rem;
+  height: 1.25rem;
+  color: var(--settings-text-secondary);
+  transition: transform 0.2s;
+  flex-shrink: 0;
+}
+#settings-page #settings-design3 .settings-d3-accordion-body {
+  border-top: 1px solid var(--settings-border);
+  overflow: hidden;
+}
+#settings-page #settings-design3 .settings-d3-accordion-body.collapsed {
+  display: none;
+}
+#settings-page #settings-design3 .settings-d3-body-inner {
+  padding: 1.5rem;
+}
+#settings-page #settings-design3 .settings-d3-company-inner {
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 576px) {
+  #settings-page #settings-design3 .settings-d3-company-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+#settings-page #settings-design3 .settings-d3-company-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+@media (min-width: 576px) {
+  #settings-page #settings-design3 .settings-d3-company-row {
+    grid-column: 1 / -1;
+  }
+}
+#settings-page #settings-design3 .settings-d3-logo-box {
+  width: 7rem;
+  height: 7rem;
+  aspect-ratio: 1;
+  border-radius: 0.75rem;
+  border: 2px dashed var(--settings-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: #f8fafc;
+  transition: border-color 0.2s;
+}
+#settings-page #settings-design3 .settings-d3-logo-box:hover {
+  border-color: var(--settings-primary);
+}
+#settings-page #settings-design3 .settings-d3-logo-box span {
+  font-size: 0.875rem;
+  color: var(--settings-text-secondary);
+}
+#settings-page #settings-design3 .settings-d3-company-fields {
+  flex: 1;
+  min-width: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media (min-width: 576px) {
+  #settings-page #settings-design3 .settings-d3-company-fields {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+#settings-page #settings-design3 .settings-d3-field-full {
+  grid-column: 1 / -1;
+}
+#settings-page #settings-design3 .settings-d3-label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--settings-text-secondary);
+  margin-bottom: 0.25rem;
+}
+#settings-page #settings-design3 .settings-d3-input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+  font-size: 0.875rem;
+  color: var(--settings-text);
+  border-radius: 0.5rem;
+  border: 1px solid var(--settings-border);
+  background: #fff;
+}
+#settings-page #settings-design3 .settings-d3-input:focus {
+  outline: none;
+  border-color: var(--settings-primary);
+  box-shadow: 0 0 0 2px rgba(248,59,59,.2);
+}
+
+.settings-accordion-header { cursor: pointer; padding: 1rem 1.25rem; display: flex; align-items: center; justify-content: space-between; }
+.settings-accordion-header:hover { background: #F9FAFB; }
+.settings-accordion-content { overflow: hidden; }
+.settings-accordion-content.collapsed { display: none; }
+
+/* Bootstrap accordion overrides for settings page */
+#settings-page .settings-accordion .accordion-item { background: var(--settings-card); }
+#settings-page .settings-accordion .accordion-button:not(.collapsed) { color: var(--settings-text); background: #fff; }
+#settings-page .settings-accordion .accordion-button:focus { box-shadow: none; border-color: transparent; }
+#settings-page .settings-accordion .accordion-button::after { filter: none; }
+#settings-page .settings-accordion .accordion-button:not(.collapsed)::after { transform: rotate(-180deg); }

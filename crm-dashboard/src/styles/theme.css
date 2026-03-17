@@ -1,0 +1,17 @@
+/* Tabs & layout visibility — match original index.html */
+[data-tab].hidden { display: none !important; }
+.tab-active { background: #F83B3B; color: white; box-shadow: 0 1px 2px rgba(0,0,0,.06); }
+.layout-tab { color: #475569; }
+.layout-tab.tab-active { color: white; }
+.layout-tab:not(.tab-active):hover { background: #f5f5f5; color: #111827; }
+.inner-tab-active { background: #F83B3B; color: white; }
+.inner-tab:not(.inner-tab-active):hover { background: #f5f5f5; }
+
+.page-tab { background: transparent; color: #64748b; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.page-tab:hover { color: #334155; }
+.page-tab.page-tab-active { color: #F83B3B; border-bottom-color: #F83B3B; font-weight: 600; }
+
+#opportunity-page.hidden, #profile-page.hidden, #settings-page.hidden { display: none !important; }
+#design1.hidden, #design2.hidden, #design3.hidden, #design4.hidden { display: none !important; }
+#profile-design1.hidden, #profile-design2.hidden, #profile-design3.hidden { display: none !important; }
+#settings-design1.hidden, #settings-design2.hidden, #settings-design3.hidden { display: none !important; }

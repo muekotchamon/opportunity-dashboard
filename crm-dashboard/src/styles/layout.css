@@ -1,0 +1,100 @@
+/* Header: match original bg-white/80 backdrop-blur border-b */
+.app-header {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+/* Main container: match original main (max-w-[1600px] mx-auto px-5 py-5) */
+.app-main {
+  max-width: 1600px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1.25rem;
+  box-sizing: border-box;
+}
+@media (max-width: 834px) {
+  .app-main { padding: 0.75rem !important; }
+  .app-header [class*="container"] { padding-left: 0.75rem !important; padding-right: 0.75rem !important; }
+  .app-header nav { flex-wrap: wrap; gap: 0.375rem; }
+  .app-header .layout-tab { padding: 0.5rem 0.75rem; font-size: 0.8125rem; }
+  .opportunity-header-grid { gap: 0.75rem !important; margin-bottom: 0.75rem !important; }
+  .header-stage-slot { min-height: 100px; }
+}
+
+/* Opportunity page: header row = 1fr + 320px, gap-4 (1rem) mb-6 (1.5rem) — match original grid */
+.opportunity-header-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  align-items: stretch;
+  min-height: 0;
+}
+@media (min-width: 1280px) {
+  .opportunity-header-grid {
+    grid-template-columns: minmax(0, 1fr) 320px;
+  }
+}
+.opportunity-header-card a.hover-primary:hover { color: #334155 !important; }
+.opportunity-header-card,
+.header-stage-panel {
+  background: #fff;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  padding: 1rem 1.25rem;
+  height: 100%;
+}
+.header-stage-slot { min-height: 120px; }
+@media (max-width: 834px) {
+  .header-stage-slot { min-height: 100px; }
+}
+
+.stepper-connector { flex: 1; max-width: 4rem; height: 2px; }
+.stepper-line { background: linear-gradient(to right, #F83B3B 0%, #F83B3B 60%, #e5e7eb 60%, #e5e7eb 100%); }
+/* Current Stage (Design 1 & 4): line at 1rem = center of 32px circle, equal columns, no gap */
+.header-stepper-wrap { display: flex; width: 100%; position: relative; gap: 0; }
+.header-stepper-wrap .header-stepper-line {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 1rem;
+  height: 2px;
+  transform: translateY(-50%);
+  z-index: 0;
+  background: linear-gradient(to right, #F83B3B 0%, #F83B3B 60%, #e5e7eb 60%, #e5e7eb 100%);
+}
+.header-stepper-wrap .header-stepper-step {
+  flex: 1 1 0%;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.header-stepper-wrap .header-stepper-label {
+  margin-top: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.chevron-step { clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 50%, calc(100% - 6px) 100%, 0 100%, 6px 50%); }
+.chevron-step:first-of-type { clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 50%, calc(100% - 6px) 100%, 0 100%, 0 50%); }
+.chevron-step:last-of-type { clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%, 6px 50%); }
+
+[data-section-empty="true"] { display: none !important; }
+
+/* Opportunity page: flex column so design panels can fill height (like original) */
+#opportunity-page {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 8rem);
+}
+#opportunity-page .opportunity-design-active {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}

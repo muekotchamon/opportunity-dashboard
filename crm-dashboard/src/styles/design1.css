@@ -1,0 +1,73 @@
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-flow: row;
+  gap: 1rem;
+  align-items: stretch;
+}
+.dashboard-grid .col-span-2 { grid-column: span 2; }
+.dashboard-grid .col-span-4 { grid-column: span 4; }
+
+/* Design 1: layout match original — gap 1rem, grid rows d1-r1..d1-r4 */
+#design1 { margin-top: 0; }
+#design1 .dashboard-grid { grid-template-rows: auto auto auto auto auto; }
+#design1 .dashboard-grid > .d1-r1 { grid-row: 1; }
+#design1 .dashboard-grid > .d1-r2 { grid-row: 2; }
+#design1 .dashboard-grid > .d1-r2b { grid-row: 3; }
+#design1 .dashboard-grid > .d1-r3 { grid-row: 4; }
+#design1 .dashboard-grid > .d1-r4 { grid-row: 5; }
+
+/* Insurance Detail + Checklist row: equal height cards, min height for balance */
+#design1 .d1-insurance-checklist-row { align-items: stretch; }
+#design1 .d1-insurance-checklist-row .card-saas { min-height: 220px; }
+
+/* Match original: section titles and borders */
+#design1 .card-saas h2 { font-size: 0.875rem; font-weight: 600; color: #1e293b; }
+#design1 .card-saas.p-5 { padding: 1.25rem !important; }
+
+@media (max-width: 1279px) {
+  .dashboard-grid { grid-template-columns: repeat(2, 1fr); }
+  .dashboard-grid .col-span-4 { grid-column: span 2; }
+}
+@media (max-width: 639px) {
+  .dashboard-grid { grid-template-columns: 1fr; }
+  .dashboard-grid .col-span-2, .dashboard-grid .col-span-4 { grid-column: span 1; }
+}
+
+@media (max-width: 1279px) {
+  #design1 .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-template-rows: none;
+    gap: 1rem;
+    align-items: stretch;
+  }
+  #design1 .dashboard-grid .col-span-2,
+  #design1 .dashboard-grid .col-span-4 { grid-column: 1; }
+  #design1 .dashboard-grid > .d1-r1,
+  #design1 .dashboard-grid > .d1-r2,
+  #design1 .dashboard-grid > .d1-r2b,
+  #design1 .dashboard-grid > .d1-r3,
+  #design1 .dashboard-grid > .d1-r4 { grid-row: auto; }
+  #design1 .dashboard-grid > .d1-r4 { grid-column: 1; }
+}
+
+@media (max-width: 834px) {
+  #design1 .dashboard-grid { gap: 0.75rem; }
+  #design1 .card-saas { padding: 0.75rem 1rem !important; }
+  #design1 .card-saas.p-5 { padding: 1rem 1.25rem !important; }
+  #design1 section.card-saas h2 { font-size: 0.8125rem; margin-bottom: 0.5rem; }
+  #design1 .notes-chat-box { margin-top: 0.5rem; padding-top: 0.5rem; }
+  #design1 .chat-input-wrap textarea { min-height: 40px; padding: 0.5rem 1rem; font-size: 0.8125rem; }
+  #design1 .gallery-slot-add .slot-add-label { min-height: 48px; font-size: 0.6875rem; }
+  #design1 .gallery-slot-add .slot-add-label svg { width: 1rem; height: 1rem; }
+  #design1 .d4-tasks-list .d4-task-item { padding: 0.375rem 0; font-size: 0.75rem; }
+}
+
+#headerProgressDesign1 .stepper-line { margin-top: -2px; }
+@media (max-width: 834px) {
+  #headerProgressDesign1 h2 { margin-bottom: 0.5rem; font-size: 0.8125rem; }
+  #headerProgressDesign1 .flex.flex-1 { min-width: 0; }
+  #headerProgressDesign1 .flex.flex-1 span:last-child { font-size: 0.6875rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 100%; }
+  #headerProgressDesign1 .w-8.h-8 { width: 1.75rem; height: 1.75rem; }
+  #headerProgressDesign1 .w-8.h-8 svg { width: 0.875rem; height: 0.875rem; }
+}

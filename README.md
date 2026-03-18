@@ -2,6 +2,8 @@
 
 CRM with Opportunity, Profile, and Company Info (System Settings). Multiple layout designs per section.
 
+**ดูเว็บได้ที่:** [https://muekotchamon.github.io/opportunity-dashboard/](https://muekotchamon.github.io/opportunity-dashboard/)
+
 ## Contents
 
 - **crm-dashboard/** – Next.js app:
@@ -38,3 +40,9 @@ Open [http://localhost:3000](http://localhost:3000) in a browser.
 2. Under **Build and deployment**, set **Source** to **GitHub Actions**.
 3. Push to `main` (or run the workflow manually: **Actions** → **Deploy to GitHub Pages** → **Run workflow**).
 4. When the workflow finishes, open **https://YOUR_USERNAME.github.io/YOUR_REPO/**.
+
+### ถ้าไซต์ยังไม่ Public (หรือเข้าไม่ได้)
+
+- **Repo ต้องเป็น Public:** **Settings** → **General** → เลื่อนลงถึง **Danger Zone** → **Change repository visibility** → เลือก **Public** → ยืนยัน
+- **Pages ต้อง deploy จาก Actions:** **Settings** → **Pages** → **Build and deployment** → **Source** เลือก **GitHub Actions** (ไม่ใช่ Deploy from a branch)
+- หลังเปลี่ยนแล้ว รอ workflow ใน **Actions** ทำงานเสร็จ แล้วลองเปิด **https://muekotchamon.github.io/opportunity-dashboard/** อีกครั้ง

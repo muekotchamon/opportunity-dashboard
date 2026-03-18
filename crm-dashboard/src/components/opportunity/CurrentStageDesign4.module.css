@@ -1,0 +1,732 @@
+/* Compact Opportunity Card - Figma Process design */
+.card {
+  width: 100%;
+  height: 100%;
+  background: white;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  border-radius: 8px;
+  outline: 1px solid #e2e8f0;
+  outline-offset: -1px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: Inter, system-ui, sans-serif;
+}
+
+/* Top: Opportunity Flow */
+.topSection {
+  align-self: stretch;
+  padding: 16px 20px;
+  background: white;
+  border-bottom: 1px solid #f1f5f9;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.paragraph {
+  align-self: stretch;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.opportunityFlowLabel {
+  color: #94a3b8;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 15px;
+  letter-spacing: 0.5px;
+}
+
+.activeBadge {
+  padding: 2px 6px;
+  background: rgba(242, 13, 13, 0.1);
+  border-radius: 4px;
+}
+
+.activeBadgeText {
+  color: #f20d0d;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 15px;
+}
+
+/* Progress line + stages */
+.flowContainer {
+  align-self: stretch;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4px;
+}
+
+.progressLineBg {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  width: 100%;
+  height: 2px;
+  background: #f1f5f9;
+}
+
+.progressLineActive {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  /* 4/5 stages done = เส้นแดงถึงก่อน Closed */
+  width: 80%;
+  height: 2px;
+  background: #f20d0d;
+}
+
+.stages {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+  flex-wrap: nowrap;
+}
+
+.stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.stageCircle {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 0 0 4px white;
+}
+
+.stageCircleDone {
+  background: #f20d0d;
+}
+
+.stageCircleCurrent {
+  background: white;
+  outline: 2px solid #f20d0d;
+  outline-offset: -2px;
+}
+
+.stageCircleCurrent::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: #f20d0d;
+  border-radius: 9999px;
+}
+
+.stageIcon {
+  width: 9.51px;
+  height: 7.01px;
+  background: white;
+  clip-path: path("M2 5l2.5 2.5L2 10V5z");
+}
+
+.stageLabel {
+  font-size: 10px;
+  font-weight: 500;
+  line-height: 15px;
+  color: #64748b;
+}
+
+.stageLabelCurrent {
+  color: #f20d0d;
+  font-weight: 700;
+}
+
+.stageDate {
+  font-size: 8px;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 12px;
+  color: #94a3b8;
+}
+
+.stageSpacer {
+  width: 16px;
+  flex-shrink: 0;
+}
+
+/* Middle: PROJECTS (2 Jobs) — ปุ่มซ่อน/แสดง, ซ้าย-ขวา balance */
+.middleSection {
+  align-self: stretch;
+  padding: 8px 20px;
+  background: rgba(248, 250, 252, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  text-align: left;
+  width: 100%;
+}
+
+.middleSection:hover {
+  background: rgba(241, 245, 249, 0.8);
+}
+
+.projectsTitleWrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+
+.projectsHeaderIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.projectsTitle {
+  flex-shrink: 0;
+  margin: 0;
+}
+
+.projectsRightGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.projectsCardTotal {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.projectsToggle {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.projectsIcon {
+  width: 13.33px;
+  height: 12px;
+  background: #f20d0d;
+}
+
+.projectsTitle {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  line-height: 16px;
+  letter-spacing: 0.3px;
+}
+
+.projectsTitleGray {
+  color: #334155;
+}
+
+.projectsTitleRed {
+  color: #f20d0d;
+}
+
+/* Jobs section — ซ่อน/แสดงได้ */
+.jobsSection {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+.jobsSection[hidden] {
+  display: none;
+}
+
+.jobRow {
+  align-self: stretch;
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.jobRow2 {
+  border-top: 1px solid #f1f5f9;
+}
+
+.jobRowHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.jobTitleWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.jobIdLabel {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 16.5px;
+  color: #94a3b8;
+}
+
+.jobIdLabelBold {
+  font-weight: 700;
+}
+
+.jobPhase {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #1e293b;
+}
+
+.jobPct {
+  padding: 2px 8px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 16.5px;
+}
+
+.jobPctRed {
+  background: rgba(242, 13, 13, 0.1);
+  color: #f20d0d;
+}
+
+.jobPctGray {
+  background: #f1f5f9;
+  color: #94a3b8;
+}
+
+/* Total Value / Paid / Remaining */
+.jobValueSummary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2px;
+  text-align: right;
+}
+
+.jobHeaderRight {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+}
+
+.jobValueSummaryLabel {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #334155;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  justify-content: flex-end;
+}
+
+.jobValueSummaryLabel i {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.jobValueSummaryTotal {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #1e293b;
+}
+
+.jobValueSummaryPaid {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #16a34a;
+}
+
+.jobValueSummaryRemaining {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 16px;
+  color: #f20d0d;
+}
+
+/* Progress bar */
+.progressBar {
+  align-self: stretch;
+  height: 6px;
+  position: relative;
+  background: #f1f5f9;
+  overflow: hidden;
+  border-radius: 9999px;
+}
+
+.progressBarFill {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  background: #f20d0d;
+  border-radius: 9999px;
+}
+
+/* Mini step flow */
+.miniStepFlow {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding-top: 4px;
+}
+
+.miniStep {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.miniStepContent {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.miniStepDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 9999px;
+}
+
+.miniStepDotActive {
+  background: white;
+  border: 2px solid #f20d0d;
+}
+
+.miniStepDotInactive {
+  border: 2px solid #cbd5e1;
+  background: white;
+}
+
+.miniStepLabel {
+  font-size: 10px;
+  line-height: 15px;
+}
+
+.miniStepLabelBold {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.miniStepLabelMuted {
+  font-weight: 400;
+  color: #64748b;
+}
+
+.miniStepDate {
+  font-size: 8px;
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 12px;
+  color: #94a3b8;
+}
+
+.miniStepDateDim {
+  color: rgba(100, 116, 139, 0.6);
+}
+
+.miniStepOpacity {
+  opacity: 0.4;
+}
+
+/* Footer */
+.footerAction {
+  align-self: stretch;
+  padding: 12px 20px;
+  background: #f8fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.avatars {
+  display: flex;
+  align-items: flex-start;
+}
+
+.avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 9999px;
+  overflow: hidden;
+  outline: 2px solid white;
+  outline-offset: -2px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #e2e8f0;
+}
+
+.avatarOverlap {
+  width: 16px;
+  margin-left: -8px;
+  position: relative;
+}
+
+.avatarOverlap .avatar {
+  position: absolute;
+  left: -8px;
+  top: 0;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.viewTimelineBtn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.viewTimelineText {
+  color: #f20d0d;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 16.5px;
+}
+
+.viewTimelineIcon {
+  width: 9.33px;
+  height: 9.33px;
+  background: #f20d0d;
+}
+
+/* Checkmark icon for completed stages (Figma: 9.51×7.01 white) */
+.checkIcon {
+  width: 10px;
+  height: 7px;
+  box-sizing: border-box;
+  border-left: 2px solid white;
+  border-bottom: 2px solid white;
+  transform: rotate(-45deg) scale(0.9);
+}
+
+/* ---------- Mobile / Responsive ---------- */
+@media (max-width: 768px) {
+  .card {
+    min-height: 0;
+  }
+
+  .topSection {
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .flowContainer {
+    padding-top: 2px;
+  }
+
+  .progressLineBg,
+  .progressLineActive {
+    top: 10px;
+    height: 1.5px;
+  }
+
+  .stages {
+    gap: 0;
+  }
+
+  .stage {
+    min-width: 0;
+  }
+
+  .stageCircle {
+    width: 20px;
+    height: 20px;
+  }
+
+  .stageCircleCurrent::after {
+    width: 6px;
+    height: 6px;
+  }
+
+  .stageLabel {
+    font-size: 8px;
+    line-height: 12px;
+  }
+
+  .stageDate {
+    font-size: 7px;
+    line-height: 10px;
+  }
+
+  .checkIcon {
+    width: 8px;
+    height: 5px;
+  }
+
+  .middleSection {
+    padding: 8px 16px;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .projectsTitleWrap {
+    min-width: 0;
+  }
+
+  .projectsTitle {
+    font-size: 11px;
+  }
+
+  .projectsCardTotal {
+    font-size: 11px;
+  }
+
+  .projectsRightGroup {
+    margin-left: auto;
+  }
+
+  .jobRow {
+    padding: 12px 16px;
+    gap: 6px;
+  }
+
+  .jobRowHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .jobHeaderRight {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .jobPhase {
+    font-size: 13px;
+    line-height: 18px;
+  }
+
+  .jobValueSummaryLabel,
+  .jobValueSummaryTotal,
+  .jobValueSummaryPaid,
+  .jobValueSummaryRemaining {
+    font-size: 10px;
+    line-height: 14px;
+  }
+
+  .miniStepFlow {
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .miniStepLabel {
+    font-size: 9px;
+    line-height: 13px;
+  }
+
+  .miniStepDate {
+    font-size: 7px;
+    line-height: 10px;
+  }
+
+  .footerAction {
+    padding: 10px 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .viewTimelineText {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .topSection {
+    padding: 10px 12px;
+  }
+
+  .opportunityFlowLabel,
+  .activeBadgeText {
+    font-size: 9px;
+  }
+
+  .middleSection {
+    padding: 6px 12px;
+  }
+
+  .projectsTitle {
+    font-size: 10px;
+  }
+
+  .projectsCardTotal {
+    font-size: 10px;
+  }
+
+  .jobRow {
+    padding: 10px 12px;
+  }
+
+  .jobPhase {
+    font-size: 12px;
+  }
+
+  .jobValueSummaryLabel,
+  .jobValueSummaryTotal,
+  .jobValueSummaryPaid,
+  .jobValueSummaryRemaining {
+    font-size: 9px;
+  }
+
+  .miniStepFlow {
+    gap: 8px;
+  }
+
+  .footerAction {
+    padding: 8px 12px;
+  }
+
+  .viewTimelineText {
+    font-size: 9px;
+  }
+
+  .avatar,
+  .avatarOverlap .avatar {
+    width: 20px;
+    height: 20px;
+  }
+
+  .avatarOverlap {
+    width: 12px;
+    margin-left: -6px;
+  }
+
+  .avatarOverlap .avatar {
+    left: -6px;
+  }
+}

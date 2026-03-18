@@ -7,7 +7,9 @@
   min-height: 0;
   flex: 1;
 }
-#design4 .design3-tabs-spacer { flex-shrink: 0; }
+#design4 .design3-tabs-spacer { flex-shrink: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; width: 100%; min-width: 0; }
+#design4 .design3-tabs-spacer .card-saas { width: 100%; min-width: 0; }
+#design4 .design3-tabs-spacer .card-saas > div { width: 100%; display: flex !important; flex-wrap: wrap; gap: 0.375rem; overflow: visible !important; }
 #design4 .d3-page-tab {
   font-size: 0.75rem;
   font-weight: 500;
@@ -15,15 +17,22 @@
   border-radius: 0.5rem;
   border: 1px solid transparent;
   white-space: nowrap;
+  flex: 1 1 0;
+  min-width: 4.5rem;
+  justify-content: center;
+  text-align: center;
 }
 #design4 .d3-page-tab.active { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
 #design4 .d3-page-tab:not(.active) { color: #475569; }
 #design4 .d3-page-tab:not(.active):hover { background: #f8fafc; }
 
-/* Communication & History tabs (Call Logs | Activities) — same as Design3, no black border */
+/* Communication & History tabs — ขยายเต็มความกว้าง */
 #design4 .design3-comm-tabs {
   border: none !important;
   border-bottom: 1px solid #f1f5f9 !important;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 #design4 .design3-comm-tabs .inner-tab {
   outline: none !important;
@@ -33,6 +42,10 @@
   border-top: none !important;
   border-bottom: 2px solid transparent !important;
   background: transparent !important;
+  flex: 1 1 0;
+  min-width: 3.5rem;
+  justify-content: center;
+  text-align: center;
 }
 #design4 .design3-comm-tabs .inner-tab:focus {
   outline: none !important;
@@ -68,6 +81,27 @@
   #design4 .design4-grid { grid-template-columns: 1fr; min-height: 0; }
   #design4 .design4-grid .d4-col1, #design4 .design4-grid .d4-col2, #design4 .design4-grid .d4-col3 { grid-column: 1; }
   #design4 .design4-grid .d4-col2 .card-saas:last-of-type { flex: 0 0 auto; min-height: 0; }
+}
+
+/* Opportunity Overview card — auto layout บน mobile */
+@media (max-width: 768px) {
+  #design4 .design4-grid { gap: 0.75rem; min-height: 0; }
+  #design4 .design4-grid .d4-col1,
+  #design4 .design4-grid .d4-col2,
+  #design4 .design4-grid .d4-col3 { min-width: 0; display: flex; flex-direction: column; gap: 0.75rem; }
+  #design4 .design4-grid .card-saas { padding: 1rem 1.25rem !important; min-height: 0 !important; }
+  #design4 .design4-grid .card-saas .d-flex.align-items-center.justify-content-between { flex-wrap: wrap; gap: 0.5rem; }
+  #design4 .design4-grid .row { flex-wrap: wrap; }
+  #design4 .design4-grid .row .col-6,
+  #design4 .design4-grid .row .col-sm-6 { flex: 0 0 100%; max-width: 100%; }
+}
+@media (max-width: 480px) {
+  #design4 .design4-grid { gap: 0.5rem; }
+  #design4 .design4-grid .d4-col1,
+  #design4 .design4-grid .d4-col2,
+  #design4 .design4-grid .d4-col3 { gap: 0.5rem; }
+  #design4 .design4-grid .card-saas { padding: 0.75rem 1rem !important; }
+  #design4 .design4-grid .card-saas h2 { font-size: 0.8125rem !important; }
 }
 
 /* Design 4 tab content layouts (non-overview) — expand to fill space */
@@ -143,3 +177,18 @@
 #design4 .design4-tab-insurance > .card-saas { flex: 1 1 auto; }
 #design4 .design4-tab-checklist { width: 100%; }
 #design4 .design4-tab-checklist > .card-saas { flex: 1 1 auto; }
+
+@media (max-width: 768px) {
+  #design4 .design4-wrap { gap: 0.75rem; }
+  #design4 .design4-grid { gap: 0.75rem; }
+  #design4 .design3-tabs-spacer { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  #design4 .d3-page-tab { white-space: normal; font-size: 0.6875rem; padding: 0.3rem 0.5rem; }
+  #design4 [data-d4-content] { gap: 0.75rem; }
+  #design4 .design4-tab-grid { gap: 0.75rem; }
+}
+@media (max-width: 480px) {
+  #design4 .design4-grid { gap: 0.5rem; }
+  #design4 [data-d4-content] { gap: 0.5rem; }
+  #design4 .design4-tab-grid { gap: 0.5rem; }
+  #design4 .d3-page-tab { font-size: 0.625rem; padding: 0.25rem 0.4rem; }
+}

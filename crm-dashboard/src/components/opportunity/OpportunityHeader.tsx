@@ -12,10 +12,10 @@ interface OpportunityHeaderProps {
 
 export default function OpportunityHeader({ layout }: OpportunityHeaderProps) {
   return (
-    <div className="opportunity-header-grid">
+    <div className={`opportunity-header-grid${layout === "design4" ? " opportunity-header-grid-design4-below" : ""}`}>
       <section className="opportunity-header-card">
-        <div className="d-flex flex-wrap align-items-start justify-content-between gap-3">
-          <div className="min-w-0">
+        <div className="opportunity-header-inner d-flex flex-wrap align-items-start justify-content-between gap-3">
+          <div className="opportunity-header-left min-w-0">
             <nav className="small text-secondary mb-1">
               <a href="#" className="text-secondary text-decoration-none hover-primary">Opportunities</a>
               <span className="mx-1">›</span>
@@ -24,8 +24,8 @@ export default function OpportunityHeader({ layout }: OpportunityHeaderProps) {
             <p className="fw-semibold text-body mb-0 lh-sm" style={{ fontSize: "1.5rem" }}>179484 · John Smith</p>
             <p className="text-secondary mt-1 mb-0 small">Roof Replacement</p>
           </div>
-          <div className="d-flex flex-column align-items-end gap-2 flex-shrink-0">
-            <div className="d-flex flex-wrap align-items-center justify-content-end gap-2">
+          <div className="opportunity-header-right d-flex flex-column align-items-end gap-2 flex-shrink-0">
+            <div className="opportunity-header-actions d-flex flex-wrap align-items-center justify-content-end gap-2">
               <span className="d-inline-flex align-items-center px-3 py-1 rounded-pill text-white text-uppercase fw-bold small" style={{ fontSize: "0.75rem", background: "#10b981" }}>Customer</span>
               <button type="button" className="btn d-inline-flex align-items-center gap-2 rounded-pill border bg-white text-body small fw-medium" style={{ padding: "0.5rem 1rem", borderColor: "#e2e8f0" }}>
                 <span className="rounded-circle d-inline-block" style={{ width: 8, height: 8, background: "#f59e0b" }} />

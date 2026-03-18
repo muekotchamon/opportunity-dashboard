@@ -7,11 +7,24 @@
   min-height: 0;
   flex: 1;
 }
-#design3 .design3-tabs-spacer { flex-shrink: 0; }
+#design3 .design3-tabs-spacer { flex-shrink: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; width: 100%; min-width: 0; }
+#design3 .design3-tabs-spacer .card-saas { width: 100%; min-width: 0; }
+#design3 .design3-tabs-spacer .card-saas > div { width: 100%; display: flex !important; flex-wrap: wrap; gap: 0.375rem; overflow: visible !important; }
 #design3.design3-wrap > .design3-grid { flex: 1 1 auto; min-height: 0; }
 
 /* Design 3 page tabs (Overview, Opportunity Info, ...) */
-#design3 .d3-page-tab { font-size: 0.75rem; font-weight: 500; padding: 0.375rem 0.75rem; border-radius: 0.5rem; border: 1px solid transparent; white-space: nowrap; }
+#design3 .d3-page-tab {
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  flex: 1 1 0;
+  min-width: 4.5rem;
+  justify-content: center;
+  text-align: center;
+}
 #design3 .d3-page-tab.active { background: #fef2f2; color: #b91c1c; border-color: #fecaca; }
 #design3 .d3-page-tab:not(.active) { color: #475569; }
 #design3 .d3-page-tab:not(.active):hover { background: #f8fafc; }
@@ -19,6 +32,9 @@
 #design3 .design3-comm-tabs {
   border: none !important;
   border-bottom: 1px solid #f1f5f9 !important;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
 }
 #design3 .design3-comm-tabs .inner-tab {
   outline: none !important;
@@ -28,6 +44,10 @@
   border-top: none !important;
   border-bottom: 2px solid transparent !important;
   background: transparent !important;
+  flex: 1 1 0;
+  min-width: 3.5rem;
+  justify-content: center;
+  text-align: center;
 }
 #design3 .design3-comm-tabs .inner-tab:focus {
   outline: none !important;
@@ -72,6 +92,21 @@
   #design3 .design3-grid { grid-template-columns: 1fr; grid-template-rows: unset; }
   #design3 .design3-grid .d3-r1, #design3 .design3-grid .d3-r2, #design3 .design3-grid .d3-r3, #design3 .design3-grid .d3-r3b, #design3 .design3-grid .d3-r4, #design3 .design3-grid .d3-r5 { grid-row: auto; }
   #design3 .design3-grid .d3-c1, #design3 .design3-grid .d3-c2, #design3 .design3-grid .d3-c3, #design3 .design3-grid .d3-c4, #design3 .design3-grid .d3-c12, #design3 .design3-grid .d3-c34 { grid-column: 1; }
+}
+
+/* Opportunity Overview card — auto layout บน mobile */
+@media (max-width: 768px) {
+  #design3 [data-d3-content="overview"]:not(.hidden) { min-height: 0; gap: 0.75rem; }
+  #design3 [data-d3-content="overview"] .design3-grid .card-saas { padding: 1rem 1.25rem !important; min-height: 0 !important; }
+  #design3 [data-d3-content="overview"] .design3-grid .card-saas .d-flex.align-items-center.justify-content-between { flex-wrap: wrap; gap: 0.5rem; }
+  #design3 [data-d3-content="overview"] .design3-grid .row { flex-wrap: wrap; }
+  #design3 [data-d3-content="overview"] .design3-grid .row .col-4 { flex: 0 0 100%; max-width: 100%; }
+  #design3 [data-d3-content="overview"] .design3-grid .row .col-6 { flex: 0 0 100%; max-width: 100%; }
+}
+@media (max-width: 480px) {
+  #design3 [data-d3-content="overview"]:not(.hidden) { gap: 0.5rem; }
+  #design3 [data-d3-content="overview"] .design3-grid .card-saas { padding: 0.75rem 1rem !important; }
+  #design3 [data-d3-content="overview"] .design3-grid .card-saas h2 { font-size: 0.8125rem !important; }
 }
 
 #design3 [data-d3-content].hidden { display: none !important; }
@@ -140,7 +175,7 @@
   #design3 .design3-tab-grid { grid-template-columns: 1fr; }
   #design3 .design3-tab-grid > section:first-child { grid-column: 1; }
 }
-#design3 .design3-tab-lead-referral { max-width: 42rem; display: flex; flex-direction: column; gap: 1rem; }
+#design3 .design3-tab-lead-referral { max-width: 100%; display: flex; flex-direction: column; gap: 1rem; }
 #design3 .design3-tab-schedule { display: flex; flex-direction: column; gap: 1rem; }
 #design3 .design3-tab-measurement { max-width: 28rem; }
 #design3 .design3-tab-estimates { max-width: 28rem; display: flex; flex-direction: column; gap: 1rem; }
@@ -150,3 +185,19 @@
 #design3 .design3-tab-communication { display: flex; flex-direction: column; gap: 1rem; }
 #design3 .design3-tab-insurance { max-width: 42rem; display: flex; flex-direction: column; gap: 1rem; }
 #design3 .design3-tab-checklist { display: flex; flex-direction: column; gap: 1rem; }
+
+@media (max-width: 768px) {
+  #design3 .d3-page-tab { white-space: normal; font-size: 0.6875rem; padding: 0.3rem 0.5rem; }
+  #design3 [data-d3-content] .card-saas { padding: 1rem 1.25rem; }
+  #design3 [data-d3-content] .card-saas h2 { font-size: 0.875rem; }
+  #design3 .design3-tab-measurement,
+  #design3 .design3-tab-estimates,
+  #design3 .design3-tab-tasks { max-width: 100%; }
+  #design3 .design3-tab-insurance { max-width: 100%; }
+}
+@media (max-width: 480px) {
+  #design3 .design3-grid { gap: 0.75rem; }
+  #design3 [data-d3-content] .card-saas { padding: 0.75rem 1rem; min-height: 0; }
+  #design3 [data-d3-content] .card-saas h2 { font-size: 0.8125rem; }
+  #design3 .design3-tab-grid { gap: 0.75rem; }
+}

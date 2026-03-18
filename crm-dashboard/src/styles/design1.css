@@ -71,3 +71,10 @@
   #headerProgressDesign1 .w-8.h-8 { width: 1.75rem; height: 1.75rem; }
   #headerProgressDesign1 .w-8.h-8 svg { width: 0.875rem; height: 0.875rem; }
 }
+@media (max-width: 480px) {
+  #design1 .dashboard-grid { gap: 0.5rem; }
+  #design1 .card-saas { padding: 0.5rem 0.75rem !important; }
+  #design1 .card-saas.p-5 { padding: 0.75rem 1rem !important; }
+  #design1 section.card-saas h2 { font-size: 0.75rem; }
+  #design1 .d1-insurance-checklist-row .card-saas { min-height: 0; }
+}

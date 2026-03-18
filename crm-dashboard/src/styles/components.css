@@ -599,3 +599,25 @@ label.gallery-slot-add.gallery-slot-has-image .slot-add-label { min-height: 0; }
 .project-service-amount:hover { color: #1d4ed8 !important; }
 .project-service-date { color: #94a3b8; font-size: 0.8125rem; font-weight: 400; }
 .project-service-timeline .text-body { color: #334155; font-weight: 500; }
+
+/* ---------- Global: cards & sections auto layout สำหรับ mobile ---------- */
+@media (max-width: 768px) {
+  .card-saas.p-4 { padding: 0.75rem 1rem !important; }
+  .card-saas.p-5 { padding: 1rem 1.25rem !important; }
+  .card-saas.p-2 { padding: 0.5rem 0.75rem !important; }
+  .card-saas h2 { font-size: 0.8125rem !important; }
+  .card-saas .row { flex-wrap: wrap; }
+  .card-saas .d-flex:not(.flex-nowrap) { flex-wrap: wrap; }
+  .card-saas table { font-size: 0.8125rem; }
+}
+@media (max-width: 480px) {
+  .card-saas.p-4 { padding: 0.5rem 0.75rem !important; }
+  .card-saas.p-5 { padding: 0.75rem 1rem !important; }
+  .card-saas.p-2 { padding: 0.375rem 0.5rem !important; }
+  .card-saas h2 { font-size: 0.75rem !important; margin-bottom: 0.5rem !important; }
+}
+/* ตารางใน card: เลื่อนแนวนอนได้บน mobile */
+.card-saas .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+@media (max-width: 768px) {
+  .card-saas .table { min-width: 400px; }
+}

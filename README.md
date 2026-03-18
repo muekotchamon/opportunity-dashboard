@@ -1,17 +1,23 @@
 # CRM Opportunity Dashboard
 
-Single-page CRM with Opportunity, Profile, and System Settings. Each section has three layout designs (Design 1, Design 2, Design 3).
+CRM with Opportunity, Profile, and Company Info (System Settings). Multiple layout designs per section.
 
 ## Contents
 
-- **index.html** – Main app:
+- **crm-dashboard/** – Next.js app:
   - **Opportunity** – Dashboard (Overview, Opportunity Info, Lead & Referral, Notes, Schedule, Measurement, Estimates, Gallery, Tasks, Communication, Insurance, Checklist).
-  - **Profile** – User profile with Basic / Job / Emergency and three layout designs.
-  - **System Settings** – Company Info, Locations, Departments, Zipcodes, Integrations, Email, Payment Obligations with three layout designs.
+  - **Profile** – User profile with Basic / Job / Document and multiple layout designs.
+  - **Company Info** – Settings: Locations, Departments, Zipcodes, Integrations, Email, Payment Obligations with multiple layout designs.
 
 ## Run locally
 
-Open `index.html` in a browser (no build step).
+```bash
+cd crm-dashboard
+npm install
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) in a browser.
 
 ## Publish to GitHub (public)
 

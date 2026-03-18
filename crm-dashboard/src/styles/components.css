@@ -356,6 +356,66 @@ label.gallery-slot-add.gallery-slot-has-image .slot-add-label { min-height: 0; }
   padding: 0.5rem 0.75rem;
 }
 
+/* Measurement table (Design 4) — same style as call logs */
+.table-measurement-wrap {
+  overflow-x: auto;
+  border-radius: 0.5rem;
+  border: 1px solid #f1f5f9;
+  font-size: 0.875rem;
+}
+.table-measurement {
+  width: 100%;
+  min-width: 480px;
+  text-align: left;
+  font-size: 0.875rem;
+  border-collapse: collapse;
+}
+.table-measurement thead tr {
+  border-bottom: 1px solid #e2e8f0;
+  background: rgba(248, 250, 252, 0.5);
+}
+.table-measurement th {
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.table-measurement tbody tr {
+  border-bottom: 1px solid #f8fafc;
+  transition: background 0.2s;
+}
+.table-measurement tbody tr:hover {
+  background: rgba(248, 250, 252, 0.5);
+}
+.table-measurement td {
+  padding: 0.75rem 1rem;
+  color: #334155;
+}
+.table-measurement .measurement-status-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.65rem;
+  border-radius: 9999px;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  background: #475569;
+  color: #fff;
+}
+.table-measurement .measurement-status-badge.measurement-status-pending {
+  background: #d97706;
+  color: #fff;
+}
+.table-measurement .measurement-status-badge.measurement-status-progress {
+  background: #2563eb;
+  color: #fff;
+}
+.table-measurement .measurement-address {
+  font-weight: 600;
+  color: #b91c1c;
+}
+
 /* Tasks list (Design 4 style) */
 .d4-tasks-list { list-style: none; padding: 0; margin: 0; }
 .d4-task-item {
@@ -377,6 +437,89 @@ label.gallery-slot-add.gallery-slot-has-image .slot-add-label { min-height: 0; }
   border-radius: 50%;
   object-fit: cover;
   border: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+
+/* Communication & History — date separator with line, SMS bubble */
+.comm-history-date.comm-history-date-line {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+.comm-history-date.comm-history-date-line::before,
+.comm-history-date.comm-history-date-line::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+.comm-sms-bubble {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Communication & History — limit to ~2 rows with scroll */
+.comm-history-scroll {
+  max-height: 10rem;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+/* Call Log cards */
+.comm-call-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.comm-call-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  background: #fff;
+  border: 1px solid #f1f5f9;
+  border-radius: 0.5rem;
+  border-left: 3px solid #2563eb;
+  transition: background 0.2s;
+}
+.comm-call-item:hover {
+  background: #fafafa;
+}
+.comm-call-item .comm-call-icon-wrap {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 0.375rem;
+  background: #ede9fe;
+  color: #6d28d9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 1rem;
+}
+.comm-call-item .comm-call-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.comm-call-item .comm-call-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.comm-call-item .comm-call-detail {
+  font-size: 0.8125rem;
+  color: #64748b;
+}
+.comm-call-item .comm-call-time {
+  font-size: 0.75rem;
+  color: #64748b;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
   flex-shrink: 0;
 }
 

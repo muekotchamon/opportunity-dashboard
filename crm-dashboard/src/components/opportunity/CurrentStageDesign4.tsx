@@ -12,16 +12,77 @@ const STAGES = [
 ] as const;
 
 const JOBS_DATA = [
-  { id: "J1", name: "Roof Replacement", phase: "Project Start", pct: 35, pctRed: true, totalValue: 1326.05, paid: 397.82, remaining: 928.23 },
-  { id: "J2", name: "Gutter Replacement", phase: "Contracted", pct: 12, pctRed: false, totalValue: 8200, paid: 2460, remaining: 5740 },
+  {
+    id: "J1",
+    name: "Roof Replacement",
+    phase: "Project Start",
+    pct: 35,
+    pctRed: true,
+    totalValue: 1326.05,
+    paid: 397.82,
+    remaining: 928.23,
+    assignees: [
+      { src: "https://i.pravatar.cc/48?img=33", name: "Jordan Lee" },
+      { src: "https://i.pravatar.cc/48?img=44", name: "Alex Kim" },
+    ],
+  },
+  {
+    id: "J2",
+    name: "Gutter Replacement",
+    phase: "Contracted",
+    pct: 12,
+    pctRed: false,
+    totalValue: 8200,
+    paid: 2460,
+    remaining: 5740,
+    assignees: [
+      { src: "https://i.pravatar.cc/48?img=12", name: "Riley Park" },
+      { src: "https://i.pravatar.cc/48?img=68", name: "Morgan Wu" },
+      { src: "https://i.pravatar.cc/48?img=25", name: "Casey Ng" },
+    ],
+  },
 ] as const;
 
 function formatMoney(n: number) {
   return new Intl.NumberFormat("en-US", { style: "currency", currency: "USD", minimumFractionDigits: 2 }).format(n);
 }
 
+function JobAssignees({
+  jobLabel,
+  people,
+}: {
+  jobLabel: string;
+  people: readonly { readonly src: string; readonly name: string }[];
+}) {
+  const names = people.map((p) => p.name).join(", ");
+  return (
+    <div
+      className={styles.jobAssigneesRow}
+      role="group"
+      aria-label={`People on this job (${jobLabel}): ${names}`}
+    >
+      <span className={styles.jobAssigneesLabel}>People on this job</span>
+      <div className={styles.avatars}>
+        {people.map((person, i) =>
+          i === 0 ? (
+            <div key={`${person.name}-${i}`} className={styles.avatar}>
+              <img src={person.src} alt={person.name} title={person.name} width={24} height={24} />
+            </div>
+          ) : (
+            <div key={`${person.name}-${i}`} className={styles.avatarOverlap}>
+              <div className={styles.avatar}>
+                <img src={person.src} alt={person.name} title={person.name} width={24} height={24} />
+              </div>
+            </div>
+          ),
+        )}
+      </div>
+    </div>
+  );
+}
+
 export default function CurrentStageDesign4() {
-  const [projectsVisible, setProjectsVisible] = useState(true);
+  const [projectsVisible, setProjectsVisible] = useState(false);
   const jobsTotal = JOBS_DATA.reduce((sum, j) => sum + j.totalValue, 0);
 
   return (
@@ -59,7 +120,7 @@ export default function CurrentStageDesign4() {
         </div>
       </div>
 
-      {/* Middle: PROJECTS (2 Jobs) — คลิกโชว์แล้วลอยเหนือ card อื่น */}
+      {/* Middle: PROJECTS (2 Jobs) — toggle expands; panel floats above sibling cards */}
       <div className={styles.projectsDropdownWrap}>
         <button
           type="button"
@@ -67,6 +128,11 @@ export default function CurrentStageDesign4() {
           onClick={() => setProjectsVisible((v) => !v)}
           aria-expanded={projectsVisible}
           aria-controls="opportunity-flow-projects"
+          aria-label={
+            projectsVisible
+              ? "Hide projects and job details"
+              : "Show projects and job details"
+          }
         >
           <span className={styles.projectsTitleWrap}>
             <span className={styles.projectsHeaderIcon}>
@@ -81,13 +147,16 @@ export default function CurrentStageDesign4() {
             <span className={styles.projectsCardTotal}>
               Total {formatMoney(jobsTotal)}
             </span>
+            <span className={styles.projectsShowAction}>
+              {projectsVisible ? "Hide" : "Show"}
+            </span>
             <span className={styles.projectsToggle} aria-hidden>
               <i className={`bi ${projectsVisible ? "bi-chevron-down" : "bi-chevron-right"}`} />
             </span>
           </span>
         </button>
 
-        {/* Jobs — เมื่อโชว์จะลอยเหนือ card อื่น */}
+        {/* Jobs — when open, floats above sibling cards */}
         <div
           id="opportunity-flow-projects"
           className={`${styles.jobsSection} ${projectsVisible ? styles.jobsSectionFloating : ""}`}
@@ -158,27 +227,10 @@ export default function CurrentStageDesign4() {
                 <span className={styles.miniStepDate}>--</span>
               </div>
             </div>
+            <JobAssignees jobLabel={`${job.id}: ${job.name}`} people={job.assignees} />
           </div>
         ))}
         </div>
-      </div>
-
-      {/* Footer: Avatars + VIEW FULL TIMELINE */}
-      <div className={styles.footerAction}>
-        <div className={styles.avatars}>
-          <div className={styles.avatar}>
-            <img src="https://i.pravatar.cc/48?img=33" alt="Owner" width={24} height={24} />
-          </div>
-          <div className={styles.avatarOverlap}>
-            <div className={styles.avatar}>
-              <img src="https://i.pravatar.cc/48?img=44" alt="Contributor" width={24} height={24} />
-            </div>
-          </div>
-        </div>
-        <button type="button" className={styles.viewTimelineBtn}>
-          <span className={styles.viewTimelineText}>VIEW FULL TIMELINE</span>
-          <i className="bi bi-arrow-right-short" style={{ fontSize: "1.25rem", color: "#f20d0d" }} aria-hidden />
-        </button>
       </div>
     </section>
   );

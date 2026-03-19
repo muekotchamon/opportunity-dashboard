@@ -89,7 +89,7 @@
   position: absolute;
   left: 0;
   top: 12px;
-  /* 4/5 stages done = เส้นแดงถึงก่อน Closed */
+  /* 4/5 stages complete — red line stops before Closed */
   width: 80%;
   height: 2px;
   background: #f20d0d;
@@ -174,7 +174,7 @@
   flex-shrink: 0;
 }
 
-/* Middle: PROJECTS (2 Jobs) — ปุ่มซ่อน/แสดง, ซ้าย-ขวา balance */
+/* Middle: PROJECTS (2 Jobs) — toggle row, left/right balanced */
 .middleSection {
   align-self: stretch;
   padding: 8px 20px;
@@ -227,6 +227,15 @@
   color: #1e293b;
 }
 
+.projectsShowAction {
+  font-size: 11px;
+  font-weight: 700;
+  color: #f20d0d;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  flex-shrink: 0;
+}
+
 .projectsToggle {
   font-size: 12px;
   color: #64748b;
@@ -254,7 +263,7 @@
   color: #f20d0d;
 }
 
-/* Jobs section — ซ่อน/แสดงได้ */
+/* Jobs section — collapsible */
 .jobsSection {
   align-self: stretch;
   display: flex;
@@ -265,7 +274,7 @@
   display: none;
 }
 
-/* เมื่อโชว์ — ลอยเหนือ card อื่น */
+/* When open — overlays sibling cards */
 .jobsSectionFloating {
   position: absolute;
   left: 0;
@@ -481,14 +490,32 @@
   opacity: 0.4;
 }
 
-/* Footer */
-.footerAction {
+/* People assigned to each job row */
+.jobAssigneesRow {
   align-self: stretch;
-  padding: 12px 20px;
-  background: #f8fafc;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-  align-items: flex-start;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+  padding-top: 10px;
+  border-top: 1px solid #f1f5f9;
+}
+
+.jobAssigneesLabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #94a3b8;
+  line-height: 15px;
+  flex-shrink: 0;
+}
+
+.jobAssigneesRow .avatar {
+  outline-color: #fff;
+  box-shadow: 0 0 0 1px #e2e8f0;
 }
 
 .avatars {
@@ -525,29 +552,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.viewTimelineBtn {
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-}
-
-.viewTimelineText {
-  color: #f20d0d;
-  font-size: 11px;
-  font-weight: 700;
-  line-height: 16.5px;
-}
-
-.viewTimelineIcon {
-  width: 9.33px;
-  height: 9.33px;
-  background: #f20d0d;
 }
 
 /* Checkmark icon for completed stages (Figma: 9.51×7.01 white) */
@@ -681,15 +685,9 @@
     line-height: 10px;
   }
 
-  .footerAction {
-    padding: 10px 16px;
-    flex-wrap: wrap;
-    gap: 8px;
-    align-items: center;
-  }
-
-  .viewTimelineText {
-    font-size: 10px;
+  .jobAssigneesRow {
+    padding-top: 8px;
+    margin-top: 2px;
   }
 }
 
@@ -715,6 +713,10 @@
     font-size: 10px;
   }
 
+  .projectsShowAction {
+    font-size: 9px;
+  }
+
   .jobRow {
     padding: 10px 12px;
   }
@@ -734,11 +736,7 @@
     gap: 8px;
   }
 
-  .footerAction {
-    padding: 8px 12px;
-  }
-
-  .viewTimelineText {
+  .jobAssigneesLabel {
     font-size: 9px;
   }
 

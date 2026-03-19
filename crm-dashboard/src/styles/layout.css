@@ -47,7 +47,6 @@
   }
 }
 .opportunity-header-card a.hover-primary:hover { color: #334155 !important; }
-.opportunity-header-card,
 .header-stage-panel {
   background: #fff;
   border-radius: 0.75rem;
@@ -57,30 +56,60 @@
   height: 100%;
 }
 
+.opportunity-header-card {
+  background: #fff;
+  border-radius: 0.75rem;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 2px rgba(0,0,0,.05);
+  padding: 1rem 1.25rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
 /* Opportunity header: auto layout — ปุ่ม wrap ได้ จัดเรียงเหมาะกับ mobile */
 .opportunity-header-inner {
   width: 100%;
   min-width: 0;
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
 }
+/* Fills extra card height (next to stage panel) so action pills sit lower, right-aligned */
+.opportunity-header-actions-gap {
+  flex: 1 1 auto;
+  min-height: 0.25rem;
+}
+
 .opportunity-header-right {
   min-width: 0;
   flex-shrink: 1;
 }
+
 .opportunity-header-actions {
+  width: 100%;
+  min-width: 0;
   flex-wrap: wrap;
   row-gap: 0.5rem;
   column-gap: 0.5rem;
   justify-content: flex-end;
-  min-width: 0;
+  padding-top: 0.25rem;
 }
+
 @media (max-width: 768px) {
+  .opportunity-header-actions-gap {
+    flex: 0 0 auto;
+    min-height: 0;
+  }
   .opportunity-header-right {
     width: 100%;
     align-items: stretch;
   }
   .opportunity-header-actions {
     justify-content: flex-start;
-    width: 100%;
+    padding-top: 0.375rem;
   }
 }
 @media (max-width: 480px) {

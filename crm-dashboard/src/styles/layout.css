@@ -40,11 +40,10 @@
 }
 @media (min-width: 1280px) {
   .opportunity-header-grid {
-    grid-template-columns: minmax(0, 1fr) 320px;
+    grid-template-columns: minmax(0, 640px) minmax(0, 1fr);
   }
-  /* Design 4: Opportunity Flow อยู่ล่าง opportunity-header-card */
-  .opportunity-header-grid.opportunity-header-grid-design4-below {
-    grid-template-columns: 1fr;
+  .opportunity-header-card {
+    max-width: 640px;
   }
 }
 .opportunity-header-card a.hover-primary:hover { color: #334155 !important; }
@@ -61,11 +60,18 @@
 /* Opportunity header: auto layout — ปุ่ม wrap ได้ จัดเรียงเหมาะกับ mobile */
 .opportunity-header-inner {
   width: 100%;
+  min-width: 0;
+}
+.opportunity-header-right {
+  min-width: 0;
+  flex-shrink: 1;
 }
 .opportunity-header-actions {
   flex-wrap: wrap;
   row-gap: 0.5rem;
   column-gap: 0.5rem;
+  justify-content: flex-end;
+  min-width: 0;
 }
 @media (max-width: 768px) {
   .opportunity-header-right {

@@ -25,7 +25,7 @@ export default function CurrentStageDesign4() {
   const jobsTotal = JOBS_DATA.reduce((sum, j) => sum + j.totalValue, 0);
 
   return (
-    <section id="headerProgressDesign4" className={`${styles.card} h-100`}>
+    <section id="headerProgressDesign4" className={`${styles.card} h-100 ${projectsVisible ? styles.cardDropdownVisible : ""}`}>
       {/* Top: Opportunity Flow */}
       <div className={styles.topSection}>
         <div className={styles.paragraph}>
@@ -59,39 +59,40 @@ export default function CurrentStageDesign4() {
         </div>
       </div>
 
-      {/* Middle: PROJECTS (2 Jobs) — คลิกซ่อน/แสดง Jobs */}
-      <button
-        type="button"
-        className={styles.middleSection}
-        onClick={() => setProjectsVisible((v) => !v)}
-        aria-expanded={projectsVisible}
-        aria-controls="opportunity-flow-projects"
-      >
-        <span className={styles.projectsTitleWrap}>
-          <span className={styles.projectsHeaderIcon}>
-            <i className="bi bi-diagram-2" style={{ fontSize: "12px", color: "#f20d0d" }} aria-hidden />
+      {/* Middle: PROJECTS (2 Jobs) — คลิกโชว์แล้วลอยเหนือ card อื่น */}
+      <div className={styles.projectsDropdownWrap}>
+        <button
+          type="button"
+          className={styles.middleSection}
+          onClick={() => setProjectsVisible((v) => !v)}
+          aria-expanded={projectsVisible}
+          aria-controls="opportunity-flow-projects"
+        >
+          <span className={styles.projectsTitleWrap}>
+            <span className={styles.projectsHeaderIcon}>
+              <i className="bi bi-diagram-2" style={{ fontSize: "12px", color: "#f20d0d" }} aria-hidden />
+            </span>
+            <p className={styles.projectsTitle}>
+              <span className={styles.projectsTitleGray}>PROJECTS </span>
+              <span className={styles.projectsTitleRed}>(2 Jobs)</span>
+            </p>
           </span>
-          <p className={styles.projectsTitle}>
-            <span className={styles.projectsTitleGray}>PROJECTS </span>
-            <span className={styles.projectsTitleRed}>(2 Jobs)</span>
-          </p>
-        </span>
-        <span className={styles.projectsRightGroup}>
-          <span className={styles.projectsCardTotal}>
-            Total {formatMoney(jobsTotal)}
+          <span className={styles.projectsRightGroup}>
+            <span className={styles.projectsCardTotal}>
+              Total {formatMoney(jobsTotal)}
+            </span>
+            <span className={styles.projectsToggle} aria-hidden>
+              <i className={`bi ${projectsVisible ? "bi-chevron-down" : "bi-chevron-right"}`} />
+            </span>
           </span>
-          <span className={styles.projectsToggle} aria-hidden>
-            <i className={`bi ${projectsVisible ? "bi-chevron-down" : "bi-chevron-right"}`} />
-          </span>
-        </span>
-      </button>
+        </button>
 
-      {/* Jobs — ซ่อน/แสดงตาม state */}
-      <div
-        id="opportunity-flow-projects"
-        className={styles.jobsSection}
-        hidden={!projectsVisible}
-      >
+        {/* Jobs — เมื่อโชว์จะลอยเหนือ card อื่น */}
+        <div
+          id="opportunity-flow-projects"
+          className={`${styles.jobsSection} ${projectsVisible ? styles.jobsSectionFloating : ""}`}
+          hidden={!projectsVisible}
+        >
         {JOBS_DATA.map((job, index) => (
           <div
             key={job.id}
@@ -159,6 +160,7 @@ export default function CurrentStageDesign4() {
             </div>
           </div>
         ))}
+        </div>
       </div>
 
       {/* Footer: Avatars + VIEW FULL TIMELINE */}

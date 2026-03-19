@@ -14,6 +14,17 @@
   font-family: Inter, system-ui, sans-serif;
 }
 
+.cardDropdownVisible {
+  overflow: visible;
+  position: relative;
+  z-index: 50;
+}
+
+.projectsDropdownWrap {
+  position: relative;
+  align-self: stretch;
+}
+
 /* Top: Opportunity Flow */
 .topSection {
   align-self: stretch;
@@ -252,6 +263,22 @@
 
 .jobsSection[hidden] {
   display: none;
+}
+
+/* เมื่อโชว์ — ลอยเหนือ card อื่น */
+.jobsSectionFloating {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  z-index: 100;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-top: none;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1), 0 4px 10px rgba(0, 0, 0, 0.06);
+  max-height: min(70vh, 480px);
+  overflow-y: auto;
 }
 
 .jobRow {
